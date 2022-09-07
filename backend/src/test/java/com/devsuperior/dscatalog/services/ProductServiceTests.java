@@ -8,6 +8,8 @@ import static org.mockito.Mockito.when;
 import java.util.List;
 import java.util.Optional;
 
+import javax.persistence.EntityNotFoundException;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -25,7 +27,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import com.devsuperior.dscatalog.dto.ProductDTO;
+import com.devsuperior.dscatalog.entities.Category;
 import com.devsuperior.dscatalog.entities.Product;
+import com.devsuperior.dscatalog.repositories.CategoryRepository;
 import com.devsuperior.dscatalog.repositories.ProductRepository;
 import com.devsuperior.dscatalog.service.ProductService;
 import com.devsuperior.dscatalog.service.exceptions.DataBaseException;
@@ -41,11 +45,15 @@ public class ProductServiceTests {
 	@Mock
 	private ProductRepository repository;
 	
+	@Mock
+	private CategoryRepository categoryRepository;
+	
 	private long existingId;
 	private long nonExistingId;
 	private long dependentId;
 	private PageImpl<Product> page;
 	private Product product;
+	private Category category;
 	
 	
 	@BeforeEach
@@ -55,6 +63,7 @@ public class ProductServiceTests {
 		dependentId = 4L;
 		product = Factory.createProduct();
 		page = new PageImpl<>(List.of(product));
+		category = Factory.createCategory();
 		
 		//Simulando o comportamento que o deleteById deve fazer quando existe Id
 		doNothing().when(repository).deleteById(existingId);
@@ -75,6 +84,22 @@ public class ProductServiceTests {
 		when(repository.findById(existingId)).thenReturn(Optional.of(product));
 		when(repository.findById(nonExistingId)).thenReturn(Optional.empty());
 		
+		//Simulando comportamento getOne
+		when(repository.getOne(existingId)).thenReturn(product);
+		when(repository.getOne(nonExistingId)).thenThrow(EntityNotFoundException.class);
+		
+		when(categoryRepository.getOne(existingId)).thenReturn(category);
+		when(categoryRepository.getOne(nonExistingId)).thenThrow(EntityNotFoundException.class);
+	}
+	
+	@Test
+	public void updateShouldReturnProductDTOWhenIdExist() {
+		
+		ProductDTO productDTO = Factory.createProductDTO();
+		
+		ProductDTO result = service.update(existingId, productDTO);
+		
+		Assertions.assertNotNull(result);
 	}
 	
 	@Test
