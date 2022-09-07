@@ -78,6 +78,22 @@ public class ProductServiceTests {
 	}
 	
 	@Test
+	public void findByIdShouldReturnProductWhenIdExist() {
+		
+		ProductDTO product = service.findById(existingId);
+		
+		Assertions.assertNotNull(product);
+	}
+	
+	@Test
+	public void findByIdShouldThrowResourceNotFoundExceptionWhenDoesNotExistId() {
+		
+		Assertions.assertThrows(ResourceNotFoundException.class, () -> {
+			service.findById(nonExistingId);
+		});
+	}
+	
+	@Test
 	public void findAllPagedShouldReturnPage() {
 		
 		Pageable pageable = PageRequest.of(0, 10);
