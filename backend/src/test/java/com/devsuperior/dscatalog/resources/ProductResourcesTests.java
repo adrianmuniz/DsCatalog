@@ -2,6 +2,7 @@ package com.devsuperior.dscatalog.resources;
 
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.util.List;
@@ -61,5 +62,21 @@ public class ProductResourcesTests {
 				);
 		
 		result.andExpect(status().isOk());
+	}
+	
+	@Test
+	public void findByIdShouldReturnProductWhenIdExist() throws Exception {
+		
+		ResultActions result = mockMvc.perform(get("/products/{id}", existingId)
+				.accept(MediaType.APPLICATION_JSON)
+			);
+		
+		result.andExpect(status().isOk());
+		result.andExpect(jsonPath("$.id").exists());
+	}
+	
+	@Test
+	public void findByIdShouldReturnNotFoundWhenIdDoesExist() throws Exception {
+		
 	}
 }
