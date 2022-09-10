@@ -88,8 +88,13 @@ public class ProductResourcesTests {
 	}
 	
 	@Test
-	public void deleteShouldReturnNoFoundWhenIdDoesExist() throws Exception{
+	public void deleteShouldReturnNotFoundWhenIdDoesExist() throws Exception{
 		
+		ResultActions result = mockMvc.perform(delete("/products/{id}", nonExistingId)
+				.accept(MediaType.APPLICATION_JSON)
+			);
+		
+		result.andExpect(status().isNotFound());
 	}
 	
 	@Test
