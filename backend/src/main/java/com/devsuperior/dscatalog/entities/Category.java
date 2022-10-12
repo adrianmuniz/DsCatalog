@@ -32,6 +32,8 @@ public class Category implements Serializable {
 	@Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
 	private Instant updateAt;
 	
+	//mapear o outro lado, assim consigo dar um .getProducts e ver os produtos relacionados a categoria
+	@ManyToMany(mappedBy = "categories")
 	private Set<Product> products = new HashSet<>();
 	
 	public Category() {	
@@ -76,8 +78,7 @@ public class Category implements Serializable {
 		updateAt = Instant.now();
 	}
 
-	//mapear o outro lado, assim consigo dar um .getProducts e ver os produtos relacionados a categoria
-	@ManyToMany(mappedBy = "categories")
+	
 	public Set<Product> getProducts() {
 		return products;
 	}
