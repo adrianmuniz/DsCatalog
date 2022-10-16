@@ -1,11 +1,13 @@
 package com.devsuperior.dscatalog.dto;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
 import com.devsuperior.dscatalog.entities.User;
 
-public class UserDTO {
+public class UserDTO implements Serializable {
+	private static final long serialVersionUID = 1L;
 
 	private Long id;
 	private String firstName;
@@ -61,6 +63,10 @@ public class UserDTO {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public Set<RoleDTO> getRoles() {
+		return roles;
 	}
 	
 	
