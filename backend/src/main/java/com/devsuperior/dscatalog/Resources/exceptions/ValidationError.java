@@ -5,13 +5,13 @@ import java.util.List;
 
 public class ValidationError extends StandardError {
 
-	private List<FieldMenssage> erros = new ArrayList<>();
+	private List<FieldMessage> erros = new ArrayList<>();
 
-	public List<FieldMenssage> getErros() {
+	public List<FieldMessage> getErros() {
 		return erros;
 	}
 	
 	public void addError(String fieldName, String message) {
-		erros.add(new FieldMenssage(fieldName, message));
+		erros.add(new FieldMessage(fieldName, message));
 	}
 }

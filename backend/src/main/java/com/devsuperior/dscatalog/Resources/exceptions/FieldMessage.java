@@ -2,17 +2,17 @@ package com.devsuperior.dscatalog.Resources.exceptions;
 
 import java.io.Serializable;
 
-public class FieldMenssage implements Serializable {
+public class FieldMessage implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private String fieldName;
 	private String message;
 	
-	public FieldMenssage() {
+	public FieldMessage() {
 		
 	}
 
-	public FieldMenssage(String fieldName, String message) {
+	public FieldMessage(String fieldName, String message) {
 		super();
 		this.fieldName = fieldName;
 		this.message = message;
