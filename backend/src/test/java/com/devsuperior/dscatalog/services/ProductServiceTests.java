@@ -4,6 +4,7 @@ import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import static org.mockito.ArgumentMatchers.any;
 
 import java.util.List;
 import java.util.Optional;
@@ -75,14 +76,16 @@ public class ProductServiceTests {
 		doThrow(DataIntegrityViolationException.class).when(repository).deleteById(dependentId);
 		
 		//Simulando o comportamento do findAll
-		when(repository.findAll((Pageable)ArgumentMatchers.any())).thenReturn(page);
+		when(repository.findAll((Pageable)any())).thenReturn(page);
 		
 		//Simulando comportamento do save
-		when(repository.save(ArgumentMatchers.any())).thenReturn(product);
+		when(repository.save(any())).thenReturn(product);
 		
 		//Simulando comportamento do findById
 		when(repository.findById(existingId)).thenReturn(Optional.of(product));
 		when(repository.findById(nonExistingId)).thenReturn(Optional.empty());
+		
+		when(repository.find(any(), any(), any())).thenReturn(page);
 		
 		//Simulando comportamento getOne
 		when(repository.getOne(existingId)).thenReturn(product);
@@ -133,10 +136,9 @@ public class ProductServiceTests {
 		
 		Pageable pageable = PageRequest.of(0, 10);
 		
-		Page<ProductDTO> result = service.findAllPaged(pageable);
+		Page<ProductDTO> result = service.findAllPaged(0L, "",pageable);
 		
 		Assertions.assertNotNull(result);
-		Mockito.verify(repository).findAll(pageable);
 	}
 	
 	@Test
