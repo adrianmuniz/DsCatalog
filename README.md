@@ -8,6 +8,19 @@
 <img height="300em" src="https://github.com/adrianmuniz/DsCatalog/blob/main/modeloDados.png"/>
 
 <h3>Front-End no Figma</h3>
-
+<img height="400em" src="https://github.com/adrianmuniz/DsCatalog/blob/main/telaDs.png"/>
 
 <p>Link: https://www.figma.com/file/1n0aifcfatWv9ozp16XCrq/DSCatalog-Bootcamp</p>
+
+<br>
+<h3>Como subir o projeto?</h3>
+<ul>
+    <li>Faça o clone do projeto em um diretório</li>
+    <li>Abra uma aba do Git na raiz do projeto /backend</li>
+    <li>Execute o comando "mvn spring-boot:run"</li>
+</ul>
+<p>Pronto! O projeto estará rodando na porta "https://localgost:8081" e poderá testar com a coleção a baixo</p>
+
+<h3>Postman</h3>
+<p>Para acessar os endpoints de todas as APIS e realizar testes basta importar a collection a baixo no Postman</p>
+<a href="link_para_seu_arquivo/documento.pdf" download>Collection do Postman</a>
