@@ -23,4 +23,4 @@
 
 <h3>Postman</h3>
 <p>Para acessar os endpoints de todas as APIS e realizar testes basta importar a collection a baixo no Postman</p>
-<a href="link_para_seu_arquivo/documento.pdf" download>Collection do Postman</a>
+<a href="https://github.com/adrianmuniz/DsCatalog/blob/main/DsCatalogPostman.json" download>Collection do Postman</a>
