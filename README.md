@@ -22,5 +22,5 @@
 <p>Pronto! O projeto estará rodando na porta "https://localgost:8081" e poderá testar com a coleção a baixo</p>
 
 <h3>Postman</h3>
-<p>Para acessar os endpoints de todas as APIS e realizar testes basta importar a collection a baixo no Postman</p>
+<p>Para acessar os endpoints de todas as APIS faça o donwload do arquivo a baixo e import no Postman</p>
 <a href="https://github.com/adrianmuniz/DsCatalog/blob/main/DsCatalogPostman.json" download>Collection do Postman</a>
