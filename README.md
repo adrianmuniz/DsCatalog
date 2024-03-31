@@ -5,3 +5,9 @@
 
 <br>
 <h3>Modelo de Dados</h3>
+<img height="300em" src="https://github.com/adrianmuniz/DsCatalog/blob/main/modeloDados.png"/>
+
+<h3>Front-End no Figma</h3>
+
+
+<p>Link: https://www.figma.com/file/1n0aifcfatWv9ozp16XCrq/DSCatalog-Bootcamp</p>
